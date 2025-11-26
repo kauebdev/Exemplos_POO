@@ -2,8 +2,13 @@
 
 class Conta
 {
-    private $valor;
+    private  $valor;
     private $tempo;
+
+    public function __construct($valor, $tempo){
+        $this->SetTempo($tempo);
+        $this->SetValor($valor);
+    }
 
     // setters
     public function SetValor($valor)
@@ -35,13 +40,14 @@ class Conta
     {
         return 0;
     }
+
 }
 
 class ContaPoupanca extends Conta
 {
     public function Calcular()
     {
-        return $this->GetValor() * (1 + 0.007) ^ $this->GetTempo();
+        return $this->GetValor() * (1 + 0.007) ** $this->GetTempo();
     }
 }
 
@@ -49,7 +55,7 @@ class ContaFundos extends Conta
 {   
     public function Calcular()
     {
-        return $this->GetValor() * (1 + 0.0075) ^ $this->GetTempo();
+        return $this->GetValor() * (1 + 0.0075) ** $this->GetTempo();
     }
 }
 
